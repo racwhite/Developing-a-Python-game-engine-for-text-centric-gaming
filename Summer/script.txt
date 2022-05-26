@@ -1,0 +1,737 @@
+s {prologue}
+t {} {(Opening exposition stuff goes here)}
+t {} {(Limbo is a boring fucking place but earth seems neat)}
+b {city_background}
+t {} {(oh gosh then you get summoned)}
+b {castle_interior}
+c {wizard} {happy} {wizard} {neutral} {wizard} {angry}
+t {Wizard} {By the backside of Jupiter! I was not prepared for that to work.}
+t {???} {Who are you, what are you unprepared for, and why am I in a bathtub?}
+t {Wizard} {For your information, I am <wizard_name>, the greatest in the land, and you're going to be my great familiar!}
+t {} {[<wizard_name> appears to ignore your other questions.]}
+t {???} {Given you're using supplies from Mages 'R Us, I am slightly skeptical of this claim.}
+c {} {} {wizard} {angry} {} {}
+t {<wizard_name>} {Listen, I had a coupon and it was about to expire. Anyway, what's your name?}
+c {} {} {} {} {} {}
+t {<player_name>} {[You puff up proudly.] That would be <player_name>.}
+t {<wizard_name>} {That's a weird name.}
+t {} {[You bare your teeth and sharp claws, but it doesn't seem to faze <wizard_name>.]}
+c {} {} {wizard} {neutral} {} {}
+t {<wizard_name>} {Anyway, I need you to clean up because this place is a mess after that summoning ritual.}
+t {<player_name>} {[You look around the tiny, dirty bathroom.] I get the feeling that was the tip of the iceberg, but I'm happy to be out of limbo so you know I guess I'll be your maid for now. Got an apron or a feather duster?}
+t {<wizard_name>} {[Flatly] Ha ha, very funny <player_name>. If you want to play dress-up while cleaning house, you can skewer some sponges on your claws.}
+z {} {life_sim} {}
+
+s {day_1}
+b {castle_interior}
+c {} {} {wizard} {neutral} {} {}
+t {<wizard_name>} {Hey, did you clean up like I asked and/or ordered you to?}
+gt {charm} {20} {cleaned_up_charm} {did_not_clean}
+x {cleaned_up_charm}
+gt {strength} {21} {cleaned_up} {did_not_clean}
+x {cleaned_up}
+t {<player_name>} {I sure did!}
+t {<wizard_name>} {Marvelous! Here, have a cookie.}
+t {} {[Hesitantly, you take the cookie. Ooh, peanut butter!]}
+chg {vitality} {1} {}
+j {merge}
+x {did_not_clean}
+t {<player_name>} {Um, about that...}
+d {lie:[Lie] I totally did:lie} {honest:I did not:truth}
+
+x {lie}
+t {<player_name>} {I put all your magical components away.}
+t {<wizard_name>} {On the floor?}
+t {<player_name>} {Yes.}
+t {<wizard_name>} {[<wizard_name> sighs heavily] I guess I'll clean these up later. Some familiar you're turning out to be.}
+chg {affection} {-5} {}
+j {merge}
+
+x {truth}
+t {<player_name>} {I had other things to do. Like watching the grass grow, staring at the sun, and oh look, I caught a cricket!}
+t {<wizard_name>} {[<wizard_name> rubs the bridge of his nose in frustration] Hmmm, I guess you're new at this, I'll explain this whole familiar business to you.}
+
+x {merge}
+t {<wizard_name>} {Being a familiar is more than just eating cookies and catching bugs. I'll need your help to keep this place clean, track the stars for favorable signs, gather reagents for spells, and be a second pair of eyes and ears for me.}
+t {<player_name>} {That sounds like a lot of work, are you sure you don't just want a house pet?}
+t {<wizard_name>} {You are not nearly fluffy or cute enough yet to fill that role, and I doubt your magical abilities are up to snuff to transform into something less...sharp.}
+t {<wizard_name>} {Speaking of that, let's work on those things for you. Get some exercise and shine up your claws so you have a nice sheen, that'll help impress the others.}
+t {<player_name>} {What others? Are you planning to parade me around like a show pony?}
+t {<wizard_name>} {No! Not at all! I wouldn't dream of...well, maybe. A little.}
+t {<player_name>} {Ugh, fine, I guess I'll practice neighing while I'm at it.}
+
+z {} {life_sim} {}
+
+s {day_3}
+b {castle_interior}
+t {<player_name>} {So, are there any actual tasks you'd like me to do? I feel pretty shiny, and also kinda bored.}
+t {<wizard_name>} {[Shuffling random papers] Yes, yes, all in good time. I have to make sure you'll work as a basic familiar before I send you off on your own. Don't walk before chewing bubble gum, right?}
+t {<player_name>} {Um, what?}
+t {<wizard_name>} {Never mind, you get the idea. Anyway, there is a wizard tea party in a few days and I'm going to bring you so that everyone will see how cool and competent I am for summoning such a dashing familiar.}
+t {<player_name>} {[Indignantly] I knew it! You're just going to show me off like a pony!}
+t {<wizard_name>} {[Dismissively] Oh please, you have to be more than a pretty face to impress the Tri-County Tea Consortium.}
+t {<player_name>} {I've been sharpening my claws, I could probably impress them by devouring them messily.}
+t {<wizard_name>} {[Visibly concerned] Or...how about we practice telling some classic wizard jokes? They'll be pleasantly surprised if there's a silver tongue behind those fangs of yours.}
+t {} {[The two of you practice being charmingly droll together.]}
+gt {charm} {25} {charm_pass} {charm_fail}
+
+x {charm_pass}
+t {<wizard_name>} {If you keep that up I might believe my own hype}
+t {<player_name>} {I'm not sure how I feel about that}
+j {merge1}
+
+x {charm_fail}
+t {<wizard_name>} {Okay so you don't have a future in sales but we can work on this}
+j {merge1}
+
+x {merge1}
+t {<wizard_name>} {You still need more practice though, make sure to keep that twinkle in your eye!}
+t {<player_name>} {Ummm...sure.}
+
+d {practice:(practice earnestly):practiced} {do_not_practice:(meh):meh}
+
+x {practiced}
+t {} {[You practiced lying with a straight face.]}
+chg {charm} {3} {}
+chg {affection} {5} {}
+j {merge2}
+
+x {meh}
+t {<wizard_name>} {I'm beginning to doubt your commitment to eye twinkling.}
+j {merge2}
+
+x {merge2}
+t {<player_name>} {are you ever going to explain why you're weird, despite my limited experience with weird?}
+t {<wizard_name>} {after the party I will give you a giant and terrible exposition dump}
+t {<player_name>} {Oh boy, I can't wait!}
+t {<wizard_name>} {Your sarcasm is noted. For now, keep yourself charming, and make sure you have a few magic tricks you can show off too, that'll be a nice boost to my ego...I mean, to our reputation!}
+t {<player_name>} {...riiiiight.}
+
+z {} {life_sim} {}
+
+s {day_5}
+b {castle_interior}
+t {<wizard_name>} {okay so the party is soon and you're going to meet my peers, who are all slightly worse than I am. Let's just make sure we have our stories straight one last time.}
+t {<player_name>} {I feel like my talents aren't exactly being utilized at this juncture}
+t {<wizard_name>} {Shhh. So. I summoned you two weeks ago, on my own, with no help, with my own summoning ritual, and the only reason I haven't been parading you around is...}
+
+d {accurate:you've been busy?:banter1} {inaccurate:you're really very shy and humble?:banter2}
+
+x {banter1}
+t {} {(banter goes here}
+j {merge1}
+
+x {banter2}
+t {} {(banter goes here}
+j {merge1}
+
+x {merge1}
+t {<wizard_name>} {you get the idea}
+t {<player_name>} {and then, and I will not let this go, you're going to explain whatever it is you've been transparently evasive about?}
+t {<wizard_name>}  {yes, absolutely.}
+t {<wizard_name>}  {now, on the subject of making me look good, I've been thinking about this a lot, and obviously familiars are magic, right, so what magic can you do?}
+t {<player_name>} {I can turn into an animal?}
+
+gt {magic} {25} {magic_pass} {magic_fail}
+
+x {magic_pass}
+t {} {you turn into a pony. it is pretty cool}
+j {merge2}
+
+x {magic_fail}
+t {} {you turn into a cat but you just cannot get the face right. horrifying.}
+j {merge2}
+
+x {merge2}
+t {<player_name>} {I hope that's impressive enough}
+t {<wizard_name>} {ngl me too}
+
+z {} {life_sim} {}
+
+s {day_7}
+b {castle_interior}
+t {<wizard_name>} {hi everyone I brought cupcakes}
+t {rival_wizard} {are they magic cupcakes?}
+t {<wizard_name>} {... yes.}
+t {<wizard_name>} {(psst. enchant the cupcakes)}
+t {<player_name>} {(how tho)}
+t {<wizard_name>} {(idk think of something)}
+
+gt {magic} {30} {magic1_pass} {magic1_fail}
+
+x {magic1_pass} 
+t {} {(the cupcakes are now pretty)}
+t {<wizard_name>} {yes I see I brought... color-changing ice cream cupcakes}
+t {rival_wizard} {alright that checks out}
+j {merge}
+
+
+x {magic1_fail}
+t {<wizard_name>} {I brought cupcakes with real moving eyeballs}
+t {rival_wizard} {that is going to make it awkward to eat}
+t {<wizard_name>} {it is, however, magic}
+j {merge}
+
+x {merge}
+t {rival_wizard} {anyway you've actually brought a friend and I didn't know you had those}
+t {<player_name>} {hi}
+t {<wizard_name>} {this is actually my familiar she's new in town and I summoned her all on my own because I am very cool}
+t {rival_wizard} {that's funny because I can distinctly remember you going off about how familiars just make wizards lazy and stupid and you'd never want to rely on one because you're better than that.}
+t {rival_wizard} {and that speech absolutely wasn't motivated by your inability to summon one because you might just be kind of a shit wizard.}
+t {<wizard_name>} {well. haha. it's so nice. to have been invited to the cupcake party.}
+t {} {(what an awkward atmosphere)}
+t {rival_wizard} {I think (other wizard) was planning to bring a familiar to the party too if his summoning was successful. how did that go (other wizard)}
+t {(other wizard)} {funny you asked because someone broke into my room and stole my ritual supplies.}
+t {<wizard_name>} {wow how tragic}
+t {rival_wizard} {and suspicious. when did you say you summoned your new familiar, <wizard_name>?}
+t {<wizard_name>} {uh. a few weeks ago.}
+
+gt {charm} {32} {flag_pass} {flag_fail}
+
+x {flag_pass}
+chg {affection} {10} {}
+t {<player_name>} {and all hes made me do since then is clean}
+t {rival_wizard} {I guess he would waste his familiars time on that.}
+
+t {} {the wizards move on to talking amongst themselves. there is an obviously unusual cat looking at you}
+gt {magic} {25} {magic2_pass} {magic2_fail}
+
+x {magic2_pass}
+chg {magic} {2} {}
+chg {int} {2} {}
+t {} {this cat is someone's familiar. they do the face better than you do}
+
+x {magic2_fail}
+t {} {huh. cat. what's up with that cat.}
+
+z {flag1} {life_sim} {}
+
+x {flag_fail}
+t {<player_name>} {whatever he said.}
+t {rival_wizard} {HMM. suspicious.}
+t {<wizard_name>} {anyway how is the tea?}
+
+t {} {the wizards move on to talking amongst themselves. there is an obviously unusual cat looking at you}
+gt {magic} {25} {magic3_pass} {magic3_fail}
+
+x {magic3_pass}
+chg {magic} {2} {}
+chg {int} {2} {}
+t {} {this cat is someone's familiar. they do the face better than you do}
+
+x {magic3_fail}
+t {} {huh. cat. what's up with that cat.}
+
+z {!flag1} {life_sim} {}
+
+
+s {day_8}
+b {castle_interior}
+t {} {happy exposition day here's the plot}
+t {} {wizard was trying to summon something really big and impressive to show off but he fucked up and basically summoned a Cthulhu}
+t {} {he was unable to get Cthulhu back into the portal so he compromised by sealing Cthulhu into his pocket}
+t {} {That's bad, but hey pocket Cthulhu}
+t {} {so in a panic he may have stolen some summoning ritual supplies from another wizard and summoned a familiar to help (b/c they're good with things relating to limbo and generally helpful?)}
+t {} {this may have not been the best idea but here we are}
+t {} {the plan is: get new summoning ritual supplies (nice ones) (Cthulhu ate a lot of the old ones/they were used up in summoning you or something)}
+t {} {but back to the life sim for now}
+z {} {life_sim} {}
+
+s {day_9}
+b {castle_interior}
+t {} {small talk}
+t {} {wizard has plans for you two to go shopping tomorrow for common ritual components, he's working on plans for getting the rarer ones (include hint that we're going graverobbing at the end of the week)}
+z {} {life_sim} {}
+
+s {day_10}
+b {castle_interior}
+t {} {(here we are at the market or something)}
+t {<wizard_name>} {I hope you like shopping}
+t {<player_name>} {I literally have never been shopping and have no opinion on it}
+t {<wizard_name>} {that's good because we have a lot to get like beer and beef and... salt... and other things}
+t {} {)somehow segue into a charm check to see if you spook the common peoples)}
+
+gt {charm} {25} {charm_pass} {charm_fail}
+
+x {charm_pass}
+t {} {you don't spook the shopkeepers too bad, but people are uneasy around you}
+j {merge1}
+
+x {charm_fail}
+t {} {people are kinda freaked out by the presence of an obvious familiar and wizard pair. it can cause a little complication or something here maybe}
+chg {stress} {5} {}
+j {merge1}
+
+x {merge1}
+t {<wizard_name>} {and you can carry this, and this, and this and this, and... you okay?}
+
+gt {strength} {25} {str_pass} {str_fail}
+
+x {str_pass}
+t {<player_name>} {I'm good boss}
+t {<wizard_name>} {well. maybe I will carry some of this anyway.}
+j {merge2}
+
+x {str_fail}
+t {<player_name>} {(and then you drop all the shit)}
+t {<wizard_name>} {(and he tries to catch or magically levitate the shit or something)}
+j {merge2}
+
+x {merge2}
+t {rival_familiar} {you two look busy : )}
+t {<player_name>} {you seem vaguely familiar good sir}
+t {rival_familiar} {that's because I am the familiar from that party a couple days ago : ) I just wanna hang out}
+t {<wizard_name>} {um I do not consent to this}
+t {rival_familiar} {haha that's fine. ill see you later anyway (he exits but not before tripping your wizard)}
+
+gt {agility} {25} {agi_pass} {agi_fail}
+
+x {agi_pass}
+chg {affection} {10} {}
+t {<player_name>} {(you catch the things but leave the wizard to eat dirt)}
+t {<wizard_name>} {oh thank god you saved the supplies}
+j {merge3}
+
+x {agi_fail}
+chg {affection} {5} {}
+t {<player_name>} {(you catch the wizard but your groceries are damaged)}
+t {<wizard_name>} {nooo not the things}
+j {merge3}
+
+x {merge3}
+t {} {on the way home there's a flier wizard grabs near the astronomy tower that I have decided most of this game takes place in or around}
+t {} {the annual muscle wizard competition is in two days. the reward is a sum of gold (to be paid for by ticket sales)}
+
+z {} {life_sim} {}
+
+s {day_12}
+b {castle_interior}
+t {} {its the annual strong wizard's lifting competition in the library. wizards after dark.}
+t {} {this is very serious business among our wizarding phd candidates. there's a large turnout. there's drinking. there's rumor of getting sponsors on board for next year to really beef up the reward.}
+
+t {<wizard_name>} {so the plan}
+t {<player_name>} {the plan.}
+t {<wizard_name>} {the plan is... you go win the competition and we get the gold we need for returning pocket Cthulhu to deep limbo.}
+t {<player_name>} {can familiars even enter the tournament}
+t {<wizard_name>} {ain't no rule that says a dog can't play basketball. anyway a familiar is only as strong as their wizard QED get going}
+
+t {} {you enter the hefty tome carrying competition}
+gt {strength} {30} {str_pass} {str_fail}
+
+x {str_pass}
+t {} {they just keep stacking them tomes on you}
+gt {vitality} {30} {vit_pass1} {vit_fail1}
+
+x {vit_pass1}
+chg {affection} {10} {}
+t {} {you get first place and that sweet reward. wizard is happy. suck it mortals.
+j {merge1}
+
+x {vit_fail1}
+t {} {3rd place. eh. it's enough of a reward in gold to reverse summon pocket Cthulhu, hopefully}
+j {merge1}
+
+x {str_fail}
+t {} {your arms are starting to shake}
+gt {vitality} {30} {vit_pass2} {vit_fail2}
+
+x {vit_pass2}
+t {} {3rd place. eh. it's enough of a reward in gold to reverse summon pocket Cthulhu, hopefully}
+j {merge1}
+
+x {vit_fail2}
+chg {stress} {10} {}
+t {} {you have collapsed. not your day.}
+t {} {while everyone is distracted, wizard has stolen some of the prize. you begin to suspect he might have a very flexible sense of ethics.}
+j {merge1}
+
+x {merge1}
+t {} {wizard tells you to chill tonight and regain your strength and muscles. he has a lead on where to find the remaining materials (bones, a sapphire) and it totally involves grave robbing}
+z {} {life_sim} {}
+
+s {day_14}
+b {castle_interior}
+t {} {(you need two things: bone dust and a rare sort of sapphire. wizard has apparently doing some behind the scenes work (so he can pull his weight. sometimes)}
+t {} {he thinks that you can kill two birds with one stone by breaking into a mausoleum where some kind of rich family stores their family remains}
+t {} {hes brought a crowbar and a shovel}
+t {} {you are in a graveyard}
+t {<wizard_name>} {I mean can the dead really own their own bones?}
+t {<player_name>} {sometimes you can be correct while still being wrong}
+t {<wizard_name>} {anyway lets get to work!}
+
+t {} {<wizard_name> gets you into a mausoleum via some suspiciously adept lock-picking}
+t {} {a check to see if you can get some heavy stone sarcophagi open once you're inside?}
+gt {strength} {35} {str_pass1} {str_fail1}
+
+x {str_pass1}
+chg {affection} {5} {}
+t {<wizard_name>} {that was so easy it's like someone wants us to take these bones}
+j {merge1}
+
+x {str_fail1}
+t {<player_name>} {hghrkrhk}
+t {<wizard_name>} {maybe we can find easier pickings further in}
+j {merge1}
+
+x {merge1}
+t {} {(you venture deeper into the mausoleum/underground in the quest for someone who was hopefully buried with their jewelry)}
+t {<wizard_name>} {in a family of dead socialites, someone had to want to take their swag to the afterlife.}
+
+t {} {(there needs to be some kind of accident that appears to trap you inside the lower mausoleum)}
+gt {vitality} {35} {vit_pass} {vit_fail}
+
+x {vit_pass}
+chg {affection} {5} {}
+t {} {you manage to keep your cool and help the wizard keep his cool}
+j {merge2}
+
+x {vit_fail}
+chg {stress} {10} {}
+t {} {LET ME OOOOOUT}
+j {merge2}
+
+x {merge2}
+t {} {guess you'll have to keep going deeper to find a way out}
+t {} {honestly I haven't thought out how this goes exactly but to get the flag you'll have to pass a strength check}
+t {} {so here it is}
+
+gt {strength} {40} {str_pass2} {str_fail2}
+
+x {str_pass2}
+t {} {you get the rare sapphire that you need}
+t {} {and somehow you escape}
+t {} {outside in the graveyard again, you get a funny feeling}
+
+gt {intelligence} {30} {int_pass1} {int_fail1}
+
+x {int_pass1}
+t {} {you feel like you're being watched...}
+j {merge3}
+
+x {int_fail1}
+t {} {let's just get out of here and go home and have hot cocoa. wizard is happy with his rock anyway}
+j {merge3}
+
+x {merge3}
+t {} {you head home successfully. the hot cocoa is delicious}
+
+z {flag2} {life_sim} {}
+
+
+x {str_fail2}
+t {} {your failure has cost the sapphire to be lost to you}
+t {} {but somehow you escape}
+t {} {outside in the graveyard again, you get a funny feeling}
+
+gt {intelligence} {30} {int_pass2} {int_fail2}
+
+x {int_pass2}
+t {} {you feel like you're being watched...}
+j {merge4}
+
+x {int_fail2}
+t {} {let's just get out of here and go home and take a shower.}
+j {merge4}
+
+x {merge4}
+t {} {you head home with your heads low. wizard figures maybe you can substitute costume jewelry for the actual rare gems. it's not the worst idea you've ever heard.}
+
+z {!flag2} {life_sim} {}
+
+s {day_15}
+b {castle_interior}
+t {} {this may need two versions to reflect progress thus far, but for now one is fine}
+t {} {Wizard is a little spooked after last night}
+t {} {hes made the both of you some tea or brought snacks or something}
+t {} {He can ask <player_name> about limbo or some other things, some bonding fluff basically}
+
+d {right_option:dialogue good:aff_up} {wrong_option:dialogue_bad:aff_down}
+
+x {aff_up}
+t {} {you picked the nice thing. wizard likes you more}
+chg {affection} {5} {}
+j {merge1}
+
+x {aff_down}
+t {} {you picked the mean thing. wizard likes you less}
+chg {affection} {-5} {}
+j {merge1}
+
+x {merge1}
+t {} {you talk a little more}
+
+d {stress_down:dialogue_good:stress_down} {no_change:dialogue_bad:no_change}
+
+x {stress_down}
+t {} {you feel a little better about <wizard_name>'s plans}
+j {merge2}
+
+x {no_change}
+t {} {sometimes you doubt your own commitment to sparkle motion}
+j {merge2}
+
+x {merge2}
+t {} {reiterate that right now the goal is to keep a low profile until the stars are right for really deep limbo}
+t {} {imply working on agility/charm will be good}
+
+z {} {life_sim} {}
+
+s {day_17}
+b {castle_interior}
+t {} {this might also need an alternate version to reflect which flags you have/do not have. but, for now...}
+t {} {wizard swears he heard something outside his window last night}
+
+d {be_nice:I'll keep watch tonight:aff_up} {be_dismissive:you're hearing things:aff_down}
+
+x {aff_up}
+chg {affection} {5} {}
+t {} {<wizard_name> is appreciative}
+j {merge1}
+
+x {aff_down}
+chg {affection} {-5} {}
+t {} {<wizard_name>'s feelings are a little hurt. just a little}
+j {merge1}
+
+x {merge1}
+t {} {Despite all the running around you've been doing wizard's research work still needs his attention, and he needs to get his shit together on that front}
+t {} {regardless of how things are looking, for now wizard has to actually focus on his wizarding stuff. he might need you to help him study or research things}
+
+z {} {life_sim} {}
+
+s {day_18}
+t {} {you're in some kind of communal area}
+t {} {wizard is rehearsing some kind of wizard power-point presentation}
+
+gt {intelligence} {30} {int_pass} {int_fail}
+
+x {int_pass}
+t {} {you are helpful and ask some questions that help wizard revise his presentation}
+chg {affection} {5} {}
+chg {stress} {-5} {}
+j {merge1}
+
+x {int_fail}
+t {} {you are totally lost here, but...}
+gt {charm} {30} {charm_pass} {charm_fail}
+
+x {charm_pass}
+t {} {but you're a good audience and that counts}
+chg {affection} {5} {}
+j {merge1}
+
+x {charm_fail}
+t {} {but nothing. you spend most of the time watching a passing butterfly.}
+j {merge1}
+
+x {merge1}
+t {} {oh no it's rival_wizard and he is accompanied by that strange man you met when you were shopping}
+t {} {oh hey that strange man is definitely probably his familiar}
+t {} {there's probably some scathing banter passed between rival and wizard}
+
+d {be_nice:challenge what rival says:aff_up} {be_dismissive:stay out of this:no_change}
+
+x {aff_up}
+t {} {you stick up for your wizard. rival's familiar seems amused.}
+chg {affection} {5} {}
+j {merge2}
+
+x {no_change}
+t {} {you stay out of this. rival's familiar winks at you. weird guy.}
+j {merge2}
+
+x {merge2}
+t {} {while all of this has been vaguely threatening, wizard has to go do wizard stuff. please guard his quarters for now.}
+
+z {} {life_sim} {}
+
+s {day_20_early}
+b {castle_interior}
+t {} {well despite your best efforts someone has broken in and stolen all the stuff you've collected for reverse summoning pocket Cthulhu}
+t {} {that is bad}
+z {} {life_sim} {}
+
+s {day_20_late}
+b {castle_interior}
+t {} {you keep watch during the night. thieves come back to the scene of the crime, right?}
+t {} {there is a suspicious cat on the roof across from you}
+t {} {that is definitely the fucker who stole from you. next time you see him you're gonna follow him and get that stuff back}
+z {} {life_sim} {}
+
+s {day_22}
+b {castle_interior}
+t {} {there he is again. that cat.}
+t {} {time to tail him}
+
+t {} {agility check}
+gt {agility} {30} {agi_pass1} {agi_fail1}
+
+x {agi_pass1}
+t {} {you are so stealthy. you are so slick}
+t {} {naturally he's gone to where he's hidden the goods or something}
+t {} {but you will need more agility}
+gt {agility} {35} {agi_pass2} {agi_fail1}
+
+x {agi_pass2}
+t {} {you have so much agility. clearly wizard's inherent shadiness has rubbed off on you}
+t {} {but ARE YOU AGILE ENOUGH TO STEAL EVERYTHING WITHOUT A SOUND? allcaps}
+gt {agility} {35} {agi_pass3} {agi_fail1}
+
+x {agi_pass3}
+t {} {you are. you steal everything back and get away.}
+j {flag_retrieved}
+
+x {agi_fail1}
+t {} {you are not. you've been spotted. this rival familiar is very smug. it reminds you of someone (<wizard_name>)}
+t {} {you decide to try and persuade him to return the things and not inform his master. maybe he has a heart?}
+gt {charm} {40} {charm_pass} {charm_fail}
+
+x {charm_pass}
+t {} {he decides to be nice and gives you back the stuff.}
+j {flag_retrieved}
+
+x {charm_fail}
+t {} {rival familiar is unmoved. suck it, noob}
+j {flag_failure}
+
+x {flag_retrieved}
+t {} {you go home successfully}
+z {flag3} {life_sim} {}
+
+x {flag_failure}
+t {} {you slink back home empty-handed. you and wizard are really in a bind now}
+z {!flag3} {life_sim} {}
+
+s {day_23_bad}
+b {castle_interior}
+t {} {another scene that will probably need different versions depending on the result of flag3/day 22}
+t {} {you and wizard discuss things, like backup plans}
+z {} {life_sim} {}
+
+s {day_23_good}
+b {castle_interior}
+t {} {another scene that will probably need different versions depending on the result of flag3/day 22}
+t {} {you and wizard discuss things, like backup plans}
+z {} {life_sim} {}
+
+s {day_25}
+b {castle_interior}
+t {} {hey the stars will be right soon. you better get ready}
+z {} {life_sim} {}
+
+s {day_27_bad}
+b {castle_interior}
+t {} {this will definitely need two versions}
+t {} {if you have flag 3, you get some chances to increase affection}
+t {} {without flag 3, you and the wizard will be trying to replace the stolen items with inferior replacements}
+z {} {life_sim} {}
+
+s {day_27_good}
+b {castle_interior}
+t {} {this will definitely need two versions}
+t {} {if you have flag 3, you get some chances to increase affection}
+t {} {without flag 3, you and the wizard will be trying to replace the stolen items with inferior replacements}
+z {} {life_sim} {}
+
+s {day_30}
+b {castle_interior}
+t {} {It's the end of the game. Hurray! You should only see this if you have at least 1 flag}
+t {} {First you have an int check to make sure the stars are exactly right}
+gt {intelligence} {45} {int_check_success} {int_check_failure}
+
+x {int_check_success}
+t {} {oh the stars are so right. let's do this}
+j {continue1}
+
+x {int_check_failure}
+t {} {the stars were not quite right. this will be a problem}
+j {go_to_dead_end1}
+
+x {continue1}
+t {} {but can you actually pull this off and safely remove pocket Cthulhu from the wizard's pocket to get him back into the portal?}
+gt {magic} {45} {magic_pass} {magic_fail}
+
+x {magic_pass}
+t {} {you get the portal open and go to throw the wizard's possessed pants into it, but...}
+t {} {pocket Cthulhu has broken out and he's angry. and he's going to take you with him to deep limbo in his many, many tentacles}
+gt {strength} {45} {str_pass} {str_fail}
+
+x {str_pass}
+t {} {you are too swole for Cthulhu and you break free. nice. go get your good or normal ending}
+j {decide_ending}
+
+x {str_fail}
+t {} {you are wrapped in pocket Cthulhu's warm and loving tentacles}
+t {} {this looks bad. what's wizard up to?}
+
+gt {affection} {45} {aff_pass} {aff_fail}
+
+x {aff_pass}
+t {} {<wizard_name> bravely gets his shit together and saves you from the monster}
+j {decide_ending}
+
+x {aff_fail}
+t {} {wizard is scared shitless and pantless. looks like you're going with Cthulhu}
+j {go_to_dead_end3}
+
+x {magic_fail}
+t {} {Cthulhu is out and going on a rampage. go to dead end 2}
+j {go_to_dead_end2}
+
+x {go_to_dead_end1}
+z {} {dead_end1} {}
+
+x {go_to_dead_end2}
+z {} {dead_end2} {}
+
+x {go_to_dead_end3}
+z {} {dead_end3} {}
+
+x {decide_ending}
+z {end_game} {} {}
+
+s {dead_end1}
+b {castle_interior}
+t {} {welcome to dead end 1.}
+t {} {the stars were wrong. you have accidentally summoned a second Cthulhu. now it and the pocket Cthulhu are fighting}
+t {} {there are going to be many casualties. probably including you}
+z {} {title_screen} {}
+
+s {dead_end2}
+b {castle_interior}
+t {} {welcome to dead end 2}
+t {} {Cthulhu is out and rampaging across the town. the collective wizards will take care of him eventually, but you and <wizard_name> are definitely going to wizard jail.}
+z {} {title_screen} {}
+
+s {dead_end3}
+b {castle_interior}
+t {} {welcome to dead end 3}
+t {} {you're back in limbo. once you returned to the great boredom of limbo, Cthulhu lost interest in you. guess you're just out here... again...}
+t {} {...bored...}
+z {} {title_screen} {}
+
+s {bad_end}
+b {castle_interior}
+t {} {if you're here, you collected 0 flags and bad things happen}
+t {} {like pocket Cthulhu eating you and the wizard}
+z {} {title_screen} {}
+
+s {normal_end}
+b {castle_interior}
+t {} {if you're here you have gotten the normal end.}
+t {} {pocket Cthulhu escaped a little and wrecked some things, but you're okay, wizard's okay, even if you're both a little on notice from the wizard community}
+t {} {you will get to stay on earth to see how things work out}
+z {} {title_screen} {}
+
+s {good_end}
+b {castle_interior}
+t {} {if you're here you have gotten the goodest end}
+t {} {you get a hug, a head pat, and are told you've done clean}
+t {} {you will be on earth for a while :) good job}
+z {} {title_screen} {}
+
+s {stress}
+b {castle_interior}
+t {(You have become overstressed, and have no choice but to rest for a day)}
+chg {stress} {-40} {}
+z {} {life_sim} {}

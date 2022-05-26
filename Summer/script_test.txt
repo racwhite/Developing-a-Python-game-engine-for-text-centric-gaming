@@ -1,0 +1,61 @@
+s {prologue}
+t {wizard} {Lorem ipsum...}
+t {wizard} {line 1}
+b {city_background}
+t {wizard} {line 2}
+b {castle_interior}
+t {<player_name>} {i'm <player_name>}
+
+j {tag_1}
+c {wizard} {neutral}
+t {wizard} {I should not display}
+x {tag_1}
+c {wizard} {happy}
+t {wizard} {I should display}
+t {wizard} {The next line is to test the gt jump.}
+
+gt {strength} {21} {true_tag_jump} {false_tag_jump}
+
+t {wizard} {I'm filler text.}
+
+x {true_tag_jump}
+t {wizard} {You will see this if strength is greater than 21. You should not see me.}
+
+x {false_tag_jump}
+c {wizard} {angry}
+t {wizard} {You should see this if strength is less than 21. You should only see me.}
+
+d {key1:decision name 1:jump_tag_1} {key2:decision name 2:jump_tag_2}
+x {jump_tag_1}
+t {wizard} {Oh my goodness, you chose the first option!}
+j {end_scene}
+x {jump_tag_2}
+t {wizard} {Good lord, you chose the second option!}
+x {end_scene}
+z {} {life_sim} {}
+
+
+s {day_2}
+
+
+
+s {day_5}
+c {wizard} {neutral}
+t {wizard} {it's time for the concrete lifting tournament}
+
+z {} {life_sim} {}
+
+s {day_30}
+t {} {It's the end of the game. Hurray!}
+t {} {First you have an int check}
+gt {intelligence} {45} {int_check_success} {int_check_failure}
+
+x {int_check_success}
+
+
+x {int_check_failure}
+
+s {stress}
+t {(You have become overstressed, and have no choice but to rest for a day)}
+chg {stress} {-40} {}
+z {} {life_sim} {}

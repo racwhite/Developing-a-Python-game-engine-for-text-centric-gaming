@@ -1,0 +1,29 @@
+s {prologue}
+b {ocean}
+# oh god what's this opening infodump
+t {} {Limbo does not change. Limbo always is.}
+t {} {Above me, Limbo stretches out forever, and below me...}
+# some kinds background change here for ~dramatic effect~
+t {} {... are the stars.}
+# tl;dr i have to sum up that limbo is sort of boring and gray and static... i think an image would be nice here
+# of other limbo creatures gathered and looking at the earth or something?
+t {} {Everyone is watching them. We are always like this.
+t {} {}
+
+# stuff
+t {} {My hand goes through the hole in the world...}
+# background change here?
+t {} {And I have the first flare of panic I have ever felt in my life.}
+
+# post-summoning stuff
+c {wizard} {angry}
+t {} {My brain is burning. The red runes on the floor are burning and pulsing in time with the heat hammering my head.}
+t {} {And the things being burned into my brain...}
+
+t {} {(here goes some more exposition about how she's p much getting a magical infodump herself in order to help adjust to being summoned)}
+
+t {} {The man in front of me looks confused, but I can see now that he's sizing me up.}
+
+
+t {wizard} {I... am ADAM ELDRITCH. And who is it that has the honor of being summoned by me
+t {Adam} {You do have a name, don't you?}
